@@ -1,11 +1,3 @@
-Ahh yes — because you pasted everything in one line, GitHub is showing it as a paragraph.
-
-👉 You need proper line breaks + spacing
-
-✅ Copy this properly formatted README 👇
-
----
-
 # 📝 To-Do Web Application  
 
 An interactive To-Do List web application built using HTML, CSS, and JavaScript. This project allows users to manage daily tasks efficiently with a modern UI and real-time updates.  
