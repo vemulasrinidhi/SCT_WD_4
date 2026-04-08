@@ -2,143 +2,35 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>To-Do App</title>
-<style>
-    body {
-        font-family: Arial;
-        background: linear-gradient(135deg, #667eea, #764ba2);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-    }
-
-    .container {
-        background: white;
-        padding: 20px;
-        width: 350px;
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    }
-
-    h2 {
-        text-align: center;
-    }
-
-    input, button {
-        padding: 10px;
-        margin: 5px 0;
-        width: 100%;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-    }
-
-    button {
-        background: #667eea;
-        color: white;
-        border: none;
-        cursor: pointer;
-    }
-
-    button:hover {
-        background: #5a67d8;
-    }
-
-    ul {
-        list-style: none;
-        padding: 0;
-    }
-
-    li {
-        background: #f4f4f4;
-        margin: 8px 0;
-        padding: 10px;
-        border-radius: 5px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .completed {
-        text-decoration: line-through;
-        color: gray;
-    }
-
-    .actions button {
-        margin-left: 5px;
-        padding: 5px;
-        font-size: 12px;
-    }
-</style>
+<title>Advanced To-Do App</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="container">
-    <h2>To-Do App</h2>
+<div class="app">
 
-    <input type="text" id="taskInput" placeholder="Enter task">
-    <input type="datetime-local" id="taskDate">
-    <button onclick="addTask()">Add Task</button>
+    <h1>✅ To-Do App</h1>
+    <p class="subtitle">Organize your tasks, set dates & times</p>
 
-    <ul id="taskList"></ul>
+   
+    <div class="input-box">
+        <input type="text" id="taskInput" placeholder="Enter a task...">
+        <input type="date" id="taskDate">
+        <input type="time" id="taskTime">
+        <button onclick="addTask()">+ Add Task</button>
+    </div>
+
+    
+    <div class="stats">
+        <div>Total: <span id="total">0</span></div>
+        <div>Completed: <span id="completed">0</span></div>
+        <div>Pending: <span id="pending">0</span></div>
+    </div>
+
+    <div id="taskList"></div>
+
 </div>
 
-<script>
-function addTask() {
-    let taskInput = document.getElementById("taskInput");
-    let taskDate = document.getElementById("taskDate");
-
-    if (taskInput.value === "") {
-        alert("Enter a task!");
-        return;
-    }
-
-    let li = document.createElement("li");
-
-    let taskText = document.createElement("span");
-    taskText.innerText = taskInput.value + " (" + taskDate.value + ")";
-
-    // COMPLETE BUTTON
-    let completeBtn = document.createElement("button");
-    completeBtn.innerText = "✔";
-    completeBtn.onclick = function() {
-        taskText.classList.toggle("completed");
-    };
-
-    // EDIT BUTTON
-    let editBtn = document.createElement("button");
-    editBtn.innerText = "Edit";
-    editBtn.onclick = function() {
-        let newTask = prompt("Edit task:", taskInput.value);
-        if (newTask) {
-            taskText.innerText = newTask + " (" + taskDate.value + ")";
-        }
-    };
-
-    // DELETE BUTTON
-    let deleteBtn = document.createElement("button");
-    deleteBtn.innerText = "Delete";
-    deleteBtn.onclick = function() {
-        li.remove();
-    };
-
-    let actionDiv = document.createElement("div");
-    actionDiv.classList.add("actions");
-
-    actionDiv.appendChild(completeBtn);
-    actionDiv.appendChild(editBtn);
-    actionDiv.appendChild(deleteBtn);
-
-    li.appendChild(taskText);
-    li.appendChild(actionDiv);
-
-    document.getElementById("taskList").appendChild(li);
-
-    taskInput.value = "";
-    taskDate.value = "";
-}
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
